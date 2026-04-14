@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
+import emailjs from '@emailjs/browser'; // ИМПОРТ EMAILJS
 import productRapeseed from '../assets/images/product-rapeseed.png';
 import productCorn from '../assets/images/product-corn.png';
 import productSunflower from '../assets/images/product-sunflower.png';
@@ -12,7 +14,6 @@ import {
 } from 'lucide-react';
 import './RequestForm.css';
 
-// Используем ID вместо имен для сохранения состояния при смене языка
 const SEEDS = [
   { id: "rapeseed_spring", image: productRapeseed },
   { id: "rapeseed_winter", image: productRapeseed },
@@ -37,6 +38,7 @@ export default function RequestForm() {
   const { t } = useTranslation();
   const productRef = useRef<HTMLDivElement>(null);
   const regionRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const [openDropdown, setOpenDropdown] = useState<DropdownType>(null);
   
@@ -122,17 +124,51 @@ export default function RequestForm() {
     if (!validate()) return;
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      console.log(formData);
-      toast.success(t('requestForm.form.toast.success'), {
-        description: t('requestForm.form.toast.desc'),
+    // Формируем красивую строку продуктов для письма
+    const productsString = formData.products.map(id => {
+      if (id === 'other') return `${t(`requestForm.products.other`)}: ${formData.customProduct}`;
+      return t(`requestForm.products.${id}`);
+    }).join(', ');
+
+    // Данные для шаблона EmailJS
+    const templateParams = {
+      products: productsString,
+      region: t(`requestForm.regions.${formData.region}`),
+      phone: formData.phone,
+    };
+
+    emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        
+        // Перенаправляем на Thank You страницу и передаем данные для карточки
+        navigate('/thank-you', { 
+          state: { 
+            products: productsString, 
+            region: t(`requestForm.regions.${formData.region}`), 
+            phone: formData.phone 
+          } 
+        });
+        
+        // Сбрасываем форму
+        setFormData({ products: [], customProduct: "", region: "", phone: "", agreement: false });
+      })
+    .catch((err) => {
+      console.error('FAILED...', err);
+      toast.error('Сталася помилка при відправці', {
+        description: 'Спробуйте пізніше або зателефонуйте нам.',
       });
-      setFormData({ products: [], customProduct: "", region: "", phone: "", agreement: false });
+    })
+    .finally(() => {
       setIsSubmitting(false);
-    }, 1000);
+    });
   };
 
-  // Получаем шаги из перевода
   const steps = t('requestForm.info.steps', { returnObjects: true }) as Array<{ num: string, label: string }>;
 
   return (

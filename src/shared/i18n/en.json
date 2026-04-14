@@ -162,5 +162,16 @@
         "email": { "title": "Email", "desc": "For requests and offers" },
         "address": { "title": "Office", "desc": "Maryanivka, Mehedivska st., 19" },
         "hours": { "title": "Working Hours", "desc": "Mon-Fri: 09:00 - 18:00" }
+      },
+      "thankYou": {
+        "title": "Thank You!",
+        "messagePart1": "Your request has been successfully received. Our manager will contact you within ",
+        "messageHighlight": "30 minutes",
+        "messagePart2": ".",
+        "summaryTitle": "Request Summary",
+        "product": "Products",
+        "region": "Delivery Region",
+        "phone": "Phone",
+        "backHome": "Return to Home Page"
       }
   }
