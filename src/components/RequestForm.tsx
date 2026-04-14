@@ -2,6 +2,10 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
+import productRapeseed from '../assets/images/product-rapeseed.png';
+import productCorn from '../assets/images/product-corn.png';
+import productSunflower from '../assets/images/product-sunflower.png';
+import productSoybean from '../assets/images/product-soybean.png';
 import { 
   Phone, ArrowRight, Clock,
   ChevronDown, CheckSquare, Square, X 
@@ -10,11 +14,11 @@ import './RequestForm.css';
 
 // Используем ID вместо имен для сохранения состояния при смене языка
 const SEEDS = [
-  { id: "rapeseed_spring", image: "https://cdn-icons-png.flaticon.com/512/1865/1865181.png" },
-  { id: "rapeseed_winter", image: "https://cdn-icons-png.flaticon.com/512/1865/1865181.png" },
-  { id: "corn", image: "https://cdn-icons-png.flaticon.com/512/1865/1865230.png" },
-  { id: "sunflower", image: "https://cdn-icons-png.flaticon.com/512/1865/1865284.png" },
-  { id: "soybean", image: "https://cdn-icons-png.flaticon.com/512/1865/1865103.png" },
+  { id: "rapeseed_spring", image: productRapeseed },
+  { id: "rapeseed_winter", image: productRapeseed },
+  { id: "corn", image: productCorn },
+  { id: "sunflower", image: productSunflower },
+  { id: "soybean", image: productSoybean },
 ];
 
 const OTHER = [
