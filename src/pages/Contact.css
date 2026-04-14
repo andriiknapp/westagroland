@@ -1,0 +1,122 @@
+.contact-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8fafc; /* Дуже світлий сіро-блакитний фон для контрасту з формою */
+  }
+  
+  .contact-page__main {
+    flex: 1;
+    padding-top: 72px; /* Висота NavBar */
+  }
+  
+  /* ─── Contact Info Section ─── */
+  .contact-info {
+    padding: 80px 24px 40px;
+  }
+  
+  .contact-info__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .contact-info__header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  
+  .contact-info__title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px 0;
+  }
+  
+  .contact-info__subtitle {
+    font-size: 16px;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* ─── Cards Grid ─── */
+  .contact-info__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .contact-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    height: 100%;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+  }
+  
+  .contact-card--clickable:hover {
+    border-color: #1a4d2e;
+    box-shadow: 0 10px 30px rgba(26, 77, 46, 0.08);
+    transform: translateY(-4px);
+  }
+  
+  .contact-card__icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: #e8f0e9;
+    color: #1a4d2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .contact-card__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .contact-card__value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .contact-card__desc {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  /* ─── Responsive ─── */
+  @media (min-width: 640px) {
+    .contact-info__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .contact-info {
+      padding: 100px 48px 60px;
+    }
+    .contact-info__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }

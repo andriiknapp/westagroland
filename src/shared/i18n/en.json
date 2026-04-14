@@ -36,7 +36,7 @@
         "brandName": "Zakhid Agro Zemlya",
         "home": "Home",
         "products": "Products",
-        "about": "About Us",
+        "contact": "Contact Us",
         "cta": "Submit Request",
         "tagline": "From field to global markets"
       },
@@ -133,5 +133,34 @@
           "hungary": "Hungary",
           "other_eu": "Other EU Countries"
         }
+      },
+      "footer": {
+        "brandDesc": "A reliable partner for international traders, food manufacturers, and European distributors.",
+        "contactUs": "Contact Us",
+        "navHeading": "Navigation",
+        "contactsHeading": "Contacts",
+        "companyHeading": "Company Details",
+        "legalAddress": "Legal address:",
+        "postalAddress": "Postal address:",
+        "bank": "Bank:",
+        "taxInfo": "Taxpayer on general terms, VAT payer",
+        "director": "Director:",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "rights": "All rights reserved."
+      },
+      "trustStrip": {
+        "experience": "Years of experience",
+        "clients": "Clients",
+        "countries": "Partner countries",
+        "satisfaction": "Satisfaction rate"
+      },
+      "contactPage": {
+        "title": "Contact Us",
+        "subtitle": "We are always open to cooperation. Contact us in a way that is convenient for you.",
+        "phone": { "title": "Phone", "desc": "Consultations and support" },
+        "email": { "title": "Email", "desc": "For requests and offers" },
+        "address": { "title": "Office", "desc": "Maryanivka, Mehedivska st., 19" },
+        "hours": { "title": "Working Hours", "desc": "Mon-Fri: 09:00 - 18:00" }
       }
   }

@@ -39,16 +39,18 @@ export default function Navbar() {
     }
   };
 
+  // Глобальные ссылки (с / в начале)
   const links = [
-    { name: t('nav.home'),  href: '#' },
-    { name: t('nav.products'), href: '#products' },
-    { name: t('nav.about'),  href: '#about' },
+    { name: t('nav.home'),     href: '/' },
+    { name: t('nav.products'), href: '/#products' },
+    { name: t('nav.contact'),  href: '/contact' },
   ];
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : 'navbar--top'}`}>
       <div className="navbar__inner">
-        <a href="#" className="navbar__logo">
+        {/* Логотип ведет на главную */}
+        <a href="/" className="navbar__logo">
           <div className="navbar__logo-icon">
             <Leaf size={16} strokeWidth={2} color="white" />
           </div>
@@ -67,7 +69,8 @@ export default function Navbar() {
         <div className="navbar__actions">
           <LanguageSelector />
           <div className="navbar__cta-wrap">
-            <a href="#contact" className="navbar__cta-btn">
+            {/* CTA теперь ведет на страницу контактов */}
+            <a href="/contact" className="navbar__cta-btn">
               {t('nav.cta')}
               <ArrowUpRight size={14} />
             </a>
@@ -94,7 +97,8 @@ export default function Navbar() {
           >
             {/* Top bar with logo + close */}
             <div className="mobile-menu__topbar">
-              <a href="#" className="mobile-menu__logo" onClick={closeMenu}>
+              {/* Логотип ведет на главную */}
+              <a href="/" className="mobile-menu__logo" onClick={closeMenu}>
                 <div className="mobile-menu__logo-icon">
                   <Leaf size={16} strokeWidth={2} color="#f5a623" />
                 </div>
@@ -141,7 +145,7 @@ export default function Navbar() {
                 
                 <p className="mobile-menu__tagline">{t('nav.tagline')}</p>
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="mobile-menu__cta"
                   onClick={closeMenu}
                 >

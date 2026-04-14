@@ -1,15 +1,19 @@
 import { motion } from 'framer-motion';
 import { Award, Users, Globe, Star } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import './TrustStrip.css';
 
-const STATS = [
-  { id: 1, icon: Award,  value: '5+',  label: 'Років досвіду' },
-  { id: 2, icon: Users,  value: '50+', label: 'Клієнтів' },
-  { id: 3, icon: Globe,  value: '10+', label: 'Країн-партнерів' },
-  { id: 4, icon: Star,   value: '98%', label: 'Задоволеність' },
-];
-
 export default function TrustStrip() {
+  const { t } = useTranslation();
+
+  // Масив всередині компонента, щоб t() мав доступ до актуальної мови
+  const STATS = [
+    { id: 1, icon: Award,  value: '5+',  label: t('trustStrip.experience') },
+    { id: 2, icon: Users,  value: '50+', label: t('trustStrip.clients') },
+    { id: 3, icon: Globe,  value: '10+', label: t('trustStrip.countries') },
+    { id: 4, icon: Star,   value: '98%', label: t('trustStrip.satisfaction') },
+  ];
+
   return (
     <section className="trust">
       <div className="trust__grid">

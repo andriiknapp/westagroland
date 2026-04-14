@@ -1,0 +1,73 @@
+.legal-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+  
+  .legal-page__main {
+    flex: 1;
+    padding: 140px 24px 80px; /* Отступ сверху для NavBar */
+  }
+  
+  .legal-page__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .legal-page__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px 0;
+  }
+  
+  .legal-page__last-updated {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 48px 0;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .legal-page__content {
+    color: #374151;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  
+  .legal-page__content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a4d2e; /* Фирменный зеленый */
+    margin: 40px 0 16px 0;
+  }
+  
+  .legal-page__content h2:first-child {
+    margin-top: 0;
+  }
+  
+  .legal-page__content p {
+    margin: 0 0 16px 0;
+  }
+  
+  .legal-page__content strong {
+    color: #111827;
+    font-weight: 600;
+  }
+  
+  .legal-page__content ul {
+    margin: 0 0 24px 0;
+    padding-left: 24px;
+  }
+  
+  .legal-page__content li {
+    margin-bottom: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .legal-page__main {
+      padding: 100px 20px 60px;
+    }
+  }
