@@ -1,0 +1,204 @@
+.logistics-section {
+    padding: 5rem 0;
+    background-color: #ffffff;
+  }
+  
+  .logistics-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  /* --- Заголовок --- */
+  .logistics-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: #6b7280;
+  }
+  
+  /* --- Карточки методов (Сверху) --- */
+  .methods-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (min-width: 768px) {
+    .methods-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .method-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .method-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary, #005f3a);
+  }
+  
+  .method-icon {
+    color: var(--color-primary, #005f3a);
+    background: rgba(0, 95, 58, 0.1);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .method-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .method-title {
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    font-size: 1.125rem;
+  }
+  
+  .method-desc {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0.25rem 0 0 0;
+  }
+  
+  /* --- Контейнер карты --- */
+  .map-container {
+    width: 100%;
+    height: 500px; /* Высота карты */
+    background-color: #f8fafc; /* Очень легкий фон для моря */
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+  }
+  
+  /* Легенда */
+  .map-legend {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    backdrop-filter: blur(4px);
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .legend-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+  }
+
+  /* Logistics.css */
+
+/* ... (предыдущие стили для хедера и карточек остаются) ... */
+
+.leaflet-map-wrapper {
+    height: 500px;
+    width: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    /* Z-index фикс, чтобы карта не перекрывала меню, если оно выпадает */
+    z-index: 1; 
+    position: relative;
+  }
+  
+  /* Стилизация попапов Leaflet (опционально) */
+  .leaflet-container {
+    font-family: inherit; 
+    background: #f8fafc;
+  }
+
+  /* Regions Legend Grid */
+.regions-legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .region-legend-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .region-legend-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .region-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .region-color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+  }
+  
+  .region-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+  }
+  
+  .region-countries {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.5;
+    font-weight: 500;
+  }

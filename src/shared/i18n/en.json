@@ -1,0 +1,137 @@
+{
+    "logistics": {
+      "title": "Logistics and Delivery",
+      "subtitle": "We ensure fast and reliable product delivery to any location",
+      "deliveryMethods": {
+        "maritime": {
+          "title": "Maritime Transport",
+          "desc": "Cost-effective delivery of large volumes of cargo through international ports."
+        },
+        "rail": {
+          "title": "Rail Transport",
+          "desc": "The optimal balance of price and speed for land routes."
+        },
+        "road": {
+          "title": "Road Transport",
+          "desc": "Fast and flexible door-to-door delivery by truck."
+        }
+      },
+      "regions": {
+        "ukraine": {
+          "name": "Ukraine (Domestic Market)",
+          "countries": ["Ukraine"]
+        },
+        "europe": {
+          "name": "Europe (Export)",
+          "countries": ["Poland", "Germany", "Romania", "Hungary", "Slovakia", "Czech Republic", "Austria", "Moldova", "Bulgaria", "France", "Italy", "Spain", "Lithuania", "Latvia", "Estonia"]
+        },
+        "asia": {
+          "name": "Caucasus and Asia",
+          "countries": ["Turkey", "Georgia", "Azerbaijan", "Kazakhstan"]
+        }
+      },
+      "mapLoading": "Loading map..."
+    },
+    "nav": {
+        "brandName": "Zakhid Agro Zemlya",
+        "home": "Home",
+        "products": "Products",
+        "about": "About Us",
+        "cta": "Submit Request",
+        "tagline": "From field to global markets"
+      },
+      "productsGrid": {
+        "eyebrow": "Assortment",
+        "title": "Our Products",
+        "subtitle": "A wide range of agricultural crops for the international market.",
+        "items": [
+          {
+            "name": "Rapeseed",
+            "tag": "Spring / Winter",
+            "desc": "High yield, complies with EU standards. Year-round supply."
+          },
+          {
+            "name": "Corn",
+            "tag": "Feed / Food grade",
+            "desc": "High grain quality, stable moisture, class 3 and above."
+          },
+          {
+            "name": "Sunflower",
+            "tag": "Oil / High-oleic",
+            "desc": "In-house processing, certified products for the food industry."
+          },
+          {
+            "name": "Soybeans",
+            "tag": "Non-GMO · IP",
+            "desc": "IP-certified, Non-GMO, tested in accredited laboratories."
+          }
+        ]
+      },
+      "requestForm": {
+        "info": {
+          "eyebrow": "Contact Us",
+          "title": "Submit a Request",
+          "desc": "Fill out the form — our manager will contact you within one business day with offer details.",
+          "steps": [
+            { "num": "01", "label": "Choose product and region" },
+            { "num": "02", "label": "Leave your contact number" },
+            { "num": "03", "label": "Get an offer within 24 hours" }
+          ]
+        },
+        "banner": {
+          "title": "Quick Estimate",
+          "desc": "Get a profitable offer in just 30 minutes"
+        },
+        "form": {
+          "labels": {
+            "products": "Products",
+            "region": "Delivery Region",
+            "phone": "Phone Number",
+            "agreement": "By using this form, you agree to the processing of personal data."
+          },
+          "placeholders": {
+            "selectProducts": "Select crops...",
+            "addMore": "Add more products...",
+            "customProduct": "Enter crop name...",
+            "selectRegion": "Select a region..."
+          },
+          "categories": {
+            "seeds": "SEEDS",
+            "other": "OTHER"
+          },
+          "buttons": {
+            "remove": "Remove",
+            "submit": "Submit Request",
+            "submitting": "Submitting..."
+          },
+          "errors": {
+            "noProduct": "Please select at least one product",
+            "noCustomProduct": "Specify the crop name",
+            "noRegion": "Please select a region",
+            "noPhone": "Enter your phone number",
+            "invalidPhone": "Invalid phone format",
+            "noAgreement": "Consent is required"
+          },
+          "toast": {
+            "success": "Request successfully sent!",
+            "desc": "We will contact you shortly."
+          }
+        },
+        "products": {
+          "rapeseed_spring": "Spring Rapeseed",
+          "rapeseed_winter": "Winter Rapeseed",
+          "corn": "Corn",
+          "sunflower": "Sunflower",
+          "soybean": "Soybeans",
+          "other": "Other crop"
+        },
+        "regions": {
+          "ukraine": "Ukraine",
+          "poland": "Poland",
+          "germany": "Germany",
+          "romania": "Romania",
+          "hungary": "Hungary",
+          "other_eu": "Other EU Countries"
+        }
+      }
+  }

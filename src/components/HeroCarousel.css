@@ -1,0 +1,190 @@
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    min-height: 600px;
+    max-height: 900px;
+    overflow: hidden;
+    background: #111;
+  }
+  
+  .hero__viewport {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  
+  .hero__container {
+    display: flex;
+    height: 100%;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  
+  .hero__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    height: 100%;
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    overflow: hidden;
+  }
+  
+  .hero__img {
+    position: absolute;
+    inset: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, transparent 100%),
+                linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+  }
+  
+  .hero__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+    z-index: 2;
+    pointer-events: none;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  
+  .hero__text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 24px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+    will-change: opacity, transform;
+  }
+  
+  .hero__text--active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .hero__headline {
+    color: #fff;
+    font-weight: 700;
+    max-width: 680px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    margin: 0;
+  }
+  
+  .hero__sub {
+    margin-top: 16px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    max-width: 480px;
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  }
+  
+  .hero__actions {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .hero__btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f5a623;
+    color: #1a3d20;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .hero__btn-primary:hover { background: #f7b540; box-shadow: 0 6px 20px rgba(245,166,35,0.4); }
+  
+  .hero__btn-ghost {
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(255,255,255,0.3);
+    transition: color 0.2s;
+  }
+  .hero__btn-ghost:hover { color: #fff; text-decoration-color: rgba(255,255,255,0.8); }
+  
+  .hero__controls {
+    position: absolute;
+    bottom: 24px;
+    left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 3;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  
+  .hero__dots { display: flex; gap: 8px; }
+  .hero__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  .hero__dot:hover { background: rgba(255,255,255,0.7); }
+  .hero__dot--active { background: #f5a623; width: 28px; border-radius: 4px; }
+  
+  .hero__arrows { display: flex; gap: 8px; }
+  .hero__arrow {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .hero__arrow:hover { background: rgba(255,255,255,0.25); }
+  
+  .hero__fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 50px;
+    background: linear-gradient(to top, #fff 0%, rgba(255,255,255,0.5) 35%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  @media (min-width: 768px) {
+    .hero__text, .hero__controls { padding-left: 48px; padding-right: 48px; }
+  }
+  @media (min-width: 1024px) {
+    .hero__text, .hero__controls { padding-left: 72px; padding-right: 72px; }
+  }

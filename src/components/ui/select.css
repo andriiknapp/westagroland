@@ -1,0 +1,89 @@
+.form-select-trigger {
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fafafa;
+    font-size: 14px;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .form-select-trigger:focus {
+    outline: none;
+    border-color: #1a4d2e;
+    box-shadow: 0 0 0 3px rgba(26, 77, 46, 0.08);
+  }
+  
+  .form-select-trigger[data-placeholder] {
+    color: #9ca3af;
+  }
+  
+  .form-select-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+    color: #6b7280;
+  }
+  
+  .form-select-content {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  .form-select-viewport {
+    padding: 4px;
+  }
+  
+  .form-select-item {
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.15s, color 0.15s;
+  }
+  
+  .form-select-item:focus {
+    outline: none;
+  }
+  
+  .form-select-item[data-highlighted],
+  .form-select-item:hover {
+    background: #ecfdf5;
+    color: #1a4d2e;
+  }
+  
+  .form-select-item[data-disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .form-select-item-text {
+    flex: 1;
+  }
+  
+  .form-select-indicator {
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-select-check {
+    width: 16px;
+    height: 16px;
+    color: #1a4d2e;
+  }
