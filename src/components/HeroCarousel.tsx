@@ -1,18 +1,37 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom'; // Импортируем Link
 import heroWheat from '../assets/images/hero-wheat.png';
 import heroSunflower from '../assets/images/hero-sunflower.png';
 import heroMachinery from '../assets/images/hero-machinery.png';
 import './HeroCarousel.css';
 
+// Вместо хардкода текста храним ключи для i18next
 const SLIDES = [
-  { id: 1, image: heroWheat,     headline: 'Надійний партнер у світовому агроекспорті',  sub: 'Якість, підтверджена роками досвіду на міжнародних ринках.' },
-  { id: 2, image: heroSunflower, headline: 'Соняшник і ріпак — від поля до порту',        sub: 'Прямі поставки без посередників. Прозорі умови. Надійна логістика.' },
-  { id: 3, image: heroMachinery, headline: 'Збір врожаю світового рівня',                 sub: 'Сучасна техніка та агрономічні стандарти ЄС на кожному етапі.' },
+  { 
+    id: 1, 
+    image: heroWheat,     
+    headlineKey: 'hero.slide1.headline',  
+    subKey: 'hero.slide1.sub' 
+  },
+  { 
+    id: 2, 
+    image: heroSunflower, 
+    headlineKey: 'hero.slide2.headline',        
+    subKey: 'hero.slide2.sub' 
+  },
+  { 
+    id: 3, 
+    image: heroMachinery, 
+    headlineKey: 'hero.slide3.headline',                 
+    subKey: 'hero.slide3.sub' 
+  },
 ];
 
 export default function HeroCarousel() {
+  const { t } = useTranslation();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 25, containScroll: false });
   const [activeIndex, setActiveIndex] = useState(0);
   const timerRef = useRef<number | null>(null);
@@ -21,8 +40,6 @@ export default function HeroCarousel() {
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  // ✅ Embla v8 — .on() returns the api itself, NOT an unsubscribe fn.
-  //    Use .off() in the cleanup instead.
   useEffect(() => {
     if (!emblaApi) return;
     const onSelect = () => setActiveIndex(emblaApi.selectedScrollSnap());
@@ -36,6 +53,19 @@ export default function HeroCarousel() {
     timerRef.current = window.setInterval(() => emblaApi.scrollNext(), 3500);
     return () => { if (timerRef.current) window.clearInterval(timerRef.current); };
   }, [emblaApi]);
+
+  // Функция для плавного скролла (как в Navbar/Footer)
+  const handleNavClick = (href: string) => {
+    if (href.includes('#')) {
+      const id = href.split('#')[1];
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0);
+    }
+  };
 
   return (
     <section className="hero">
@@ -53,16 +83,21 @@ export default function HeroCarousel() {
       <div className="hero__content">
         {SLIDES.map((slide, i) => (
           <div key={slide.id} className={`hero__text ${i === activeIndex ? 'hero__text--active' : ''}`}>
-            <h1 className="hero__headline">{slide.headline}</h1>
-            <p className="hero__sub">{slide.sub}</p>
+            {/* Рендерим переводы по ключам */}
+            <h1 className="hero__headline">{t(slide.headlineKey)}</h1>
+            <p className="hero__sub">{t(slide.subKey)}</p>
             <div className="hero__actions">
-              <button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="hero__btn-primary"
+              {/* Заменили button и <a> на <Link> */}
+              <Link to="/contact" className="hero__btn-primary">
+                {t('hero.btnPrimary')} <ArrowRight size={16} />
+              </Link>
+              <Link 
+                to="/#products" 
+                className="hero__btn-ghost"
+                onClick={() => handleNavClick('/#products')}
               >
-                Залишити заявку <ArrowRight size={16} />
-              </button>
-              <a href="#products" className="hero__btn-ghost">Наша продукція</a>
+                {t('hero.btnGhost')}
+              </Link>
             </div>
           </div>
         ))}

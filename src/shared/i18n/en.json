@@ -178,5 +178,21 @@
         "region": "Delivery Region",
         "phone": "Phone",
         "backHome": "Return to Home Page"
+      },
+      "hero": {
+        "slide1": {
+          "headline": "A reliable partner in global agricultural export",
+          "sub": "Quality proven by years of experience in international markets."
+        },
+        "slide2": {
+          "headline": "Sunflower and rapeseed — from field to port",
+          "sub": "Direct supplies without intermediaries. Transparent conditions. Reliable logistics."
+        },
+        "slide3": {
+          "headline": "World-class harvesting",
+          "sub": "Modern machinery and EU agronomic standards at every stage."
+        },
+        "btnPrimary": "Leave a request",
+        "btnGhost": "Our products"
       }
   }
