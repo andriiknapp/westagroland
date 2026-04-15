@@ -44,7 +44,7 @@ export default function Navbar() {
   };
 
   // Умный обработчик кликов для ссылок (особенно для якорных ссылок вроде /#products)
-  const handleNavClick = (href) => {
+  const handleNavClick = (href: string) => {
     if (isOpen) {
       closeMenu();
     }

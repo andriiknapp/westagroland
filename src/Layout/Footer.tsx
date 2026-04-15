@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'; // Импортируем Link
+import { Link } from 'react-router-dom';
 import { Leaf, Mail, Phone, MapPin, ArrowUpRight, Building2, Landmark, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import './Footer.css';
@@ -7,16 +7,14 @@ export default function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
-  // Обновляем ссылки: добавляем корень "/", чтобы они работали с любых страниц
   const NAV_LINKS = [
     { name: t('nav.home'), href: '/' },
     { name: t('nav.products'), href: '/#products' },
     { name: t('nav.contact'), href: '/contact' },
   ];
 
-  // Функция для плавного скролла к якорям (как в Navbar)
-  const handleNavClick = (href) => {
-    // Если кликаем на главную и уже находимся на ней - плавно скроллим наверх
+  // Функция для плавного скролла к якорям (добавлен тип : string)
+  const handleNavClick = (href: string) => {
     if (href === '/') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -29,7 +27,7 @@ export default function Footer() {
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 0); // В футере меню закрывать не нужно, поэтому задержка 0
+      }, 0); 
     }
   };
 
@@ -49,7 +47,6 @@ export default function Footer() {
             <p className="footer__description">
               {t('footer.brandDesc')}
             </p>
-            {/* Заменяем <a> на <Link> */}
             <Link to="/contact" className="footer__contact-link">
               {t('footer.contactUs')}
               <ArrowUpRight size={14} />
@@ -62,7 +59,6 @@ export default function Footer() {
             <ul className="footer__list">
               {NAV_LINKS.map((link) => (
                 <li key={link.name}>
-                  {/* Заменяем <a> на <Link> с обработчиком скролла */}
                   <Link 
                     to={link.href} 
                     className="footer__link"
@@ -80,14 +76,12 @@ export default function Footer() {
             <p className="footer__heading">{t('footer.contactsHeading')}</p>
             <ul className="footer__list">
               <li>
-                {/* tel: оставляем обычным <a> */}
                 <a href="tel:+380673606627" className="footer__contact-item">
                   <Phone size={16} className="footer__contact-icon" />
                   (067) 360 66 27
                 </a>
               </li>
               <li>
-                {/* mailto: оставляем обычным <a> */}
                 <a href="mailto:ppzahidagrozemly@ukr.net" className="footer__contact-item">
                   <Mail size={16} className="footer__contact-icon" />
                   ppzahidagrozemly@ukr.net
@@ -98,7 +92,7 @@ export default function Footer() {
                   <MapPin size={16} className="footer__contact-icon" style={{ marginTop: '2px' }} />
                   <div>
                     <span className="footer__info-label">{t('footer.postalAddress')}</span><br/>
-                    35051, Rivne region, Kostopil district, village of Chudvy, old village Street, building 3а
+                    {t('footer.postalAddressValue')}
                   </div>
                 </div>
               </li>
@@ -112,7 +106,7 @@ export default function Footer() {
               <li>
                 <Building2 size={15} className="footer__info-icon" />
                 <span>
-                  <strong>ПП "Захід Агро Земля"</strong><br/>
+                  <strong>{t('footer.companyName')}</strong><br/>
                   ЄДРПОУ: 42632046<br/>
                   ІПН: 426320417093
                 </span>
@@ -121,21 +115,21 @@ export default function Footer() {
                 <Landmark size={15} className="footer__info-icon" />
                 <span>
                   П/Р: UA243052990000026004020701667<br/>
-                  {t('footer.bank')} АТ КБ "ПРИВАТБАНК" м. Рівне
+                  {t('footer.bank')} {t('footer.bankName')}
                 </span>
               </li>
               <li>
                 <MapPin size={15} className="footer__info-icon" />
                 <span>
                   <span className="footer__info-label">{t('footer.legalAddress')}</span><br/>
-                  35051, Рівненська обл., Костопільський р-н,<br/> с. Чудви, вул. Набережна, 4
+                  {t('footer.legalAddressValue')}
                 </span>
               </li>
               <li>
                 <FileText size={15} className="footer__info-icon" />
                 <span>
                   {t('footer.taxInfo')}<br/>
-                  <span className="footer__info-label">{t('footer.director')}</span> Клещевнікова С.С.
+                  <span className="footer__info-label">{t('footer.director')}</span> {t('footer.directorName')}
                 </span>
               </li>
             </ul>
@@ -149,7 +143,6 @@ export default function Footer() {
             &copy; {currentYear} {t('nav.brandName')}. {t('footer.rights')}
           </p>
           <div className="footer__legal-links">
-            {/* Заменяем <a> на <Link> для внутренних страниц */}
             <Link to="/privacy-policy" className="footer__legal-link" onClick={() => handleNavClick('/')}>
               {t('footer.privacy')}
             </Link>
