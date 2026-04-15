@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Leaf, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom'; // Импортируем Link
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../components/LanguageSelector';
 import "./NavBar.css";
+
+// Выносим MotionLink за пределы компонента, чтобы избежать лишних перерисовок
+const MotionLink = motion(Link);
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -39,7 +43,26 @@ export default function Navbar() {
     }
   };
 
-  // Глобальные ссылки (с / в начале)
+  // Умный обработчик кликов для ссылок (особенно для якорных ссылок вроде /#products)
+  const handleNavClick = (href) => {
+    if (isOpen) {
+      closeMenu();
+    }
+    
+    // Если ссылка содержит хэш (якорь), делаем плавный скролл вручную
+    if (href.includes('#')) {
+      const id = href.split('#')[1];
+      // Задержка нужна, чтобы успело сняться body.style.overflow = 'hidden' 
+      // и страница успела отрендериться, если мы переходим с другого роута
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, isOpen ? 300 : 0); // Если меню было открыто, ждем чуть дольше (пока закроется)
+    }
+  };
+
   const links = [
     { name: t('nav.home'),     href: '/' },
     { name: t('nav.products'), href: '/#products' },
@@ -48,32 +71,42 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : 'navbar--top'}`}>
-      <div className="navbar__inner">
-        {/* Логотип ведет на главную */}
-        <a href="/" className="navbar__logo">
-          <div className="navbar__logo-icon">
-            <Leaf size={16} strokeWidth={2} color="white" />
-          </div>
-          <span className="navbar__logo-text">{t('nav.brandName')}</span>
-        </a>
+    <div className="navbar__inner">
+      {/* Логотип */}
+      <Link to="/" className="navbar__logo" onClick={() => handleNavClick('/')}>
+        <div className="navbar__logo-container">
+          <img 
+            src="/favicon.svg" 
+            alt="Zachid Agro Zemlia Logo" 
+            className="navbar__logo-img" 
+          />
+        </div>
+        <div className="navbar__logo-text-group">
+          <span className="navbar__logo-text">Zachid Agro Zemlia</span>
+          <span className="navbar__logo-subtext">Agro Industrial Group</span>
+        </div>
+      </Link>
 
         <div className="navbar__links">
           {links.map((link) => (
-            <a key={link.name} href={link.href} className="navbar__link">
+            <Link 
+              key={link.name} 
+              to={link.href} 
+              className="navbar__link"
+              onClick={() => handleNavClick(link.href)}
+            >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
-        {/* Group CTA and LangSelector for Desktop */}
         <div className="navbar__actions">
           <LanguageSelector />
           <div className="navbar__cta-wrap">
-            {/* CTA теперь ведет на страницу контактов */}
-            <a href="/contact" className="navbar__cta-btn">
+            <Link to="/contact" className="navbar__cta-btn">
               {t('nav.cta')}
               <ArrowUpRight size={14} />
-            </a>
+            </Link>
           </div>
           
           <button
@@ -95,15 +128,11 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            {/* Top bar with logo + close */}
             <div className="mobile-menu__topbar">
-              {/* Логотип ведет на главную */}
-              <a href="/" className="mobile-menu__logo" onClick={closeMenu}>
-                <div className="mobile-menu__logo-icon">
-                  <Leaf size={16} strokeWidth={2} color="#f5a623" />
-                </div>
-                <span className="mobile-menu__logo-text">{t('nav.brandName')}</span>
-              </a>
+              <Link to="/" className="mobile-menu__logo" onClick={() => handleNavClick('/')}>
+                <img src="/favicon.svg" alt="Logo" className="mobile-menu__logo-img" />
+                <span className="mobile-menu__logo-text">Zachid Agro Zemlia</span>
+              </Link>
               <button
                 className="mobile-menu__close"
                 onClick={closeMenu}
@@ -113,22 +142,21 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Nav links + bottom CTA */}
             <nav className="mobile-menu__nav">
               <div className="mobile-menu__links">
                 {links.map((link, i) => (
-                  <motion.a
+                  <MotionLink
                     key={link.name}
-                    href={link.href}
+                    to={link.href}
                     className="mobile-menu__link"
-                    onClick={closeMenu}
+                    onClick={() => handleNavClick(link.href)}
                     initial={{ opacity: 0, x: -16 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.06 + 0.1, ease: 'easeOut' }}
                   >
                     {link.name}
                     <ArrowUpRight size={18} className="mobile-menu__link-arrow" />
-                  </motion.a>
+                  </MotionLink>
                 ))}
               </div>
 
@@ -138,20 +166,19 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.32, ease: 'easeOut' }}
               >
-                {/* Language Selector in Mobile Menu */}
                 <div className="mobile-menu__lang-wrap">
                    <LanguageSelector />
                 </div>
                 
                 <p className="mobile-menu__tagline">{t('nav.tagline')}</p>
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="mobile-menu__cta"
-                  onClick={closeMenu}
+                  onClick={() => handleNavClick('/contact')}
                 >
                   {t('nav.cta')}
                   <ArrowUpRight size={16} />
-                </a>
+                </Link>
               </motion.div>
             </nav>
           </motion.div>

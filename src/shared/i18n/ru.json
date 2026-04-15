@@ -143,11 +143,16 @@
         "legalAddress": "Юридический адрес:",
         "postalAddress": "Почтовый адрес:",
         "bank": "Банк:",
-        "taxInfo": "Плательщик налога на общих основаниях, плательщик НДС",
+        "taxInfo": "Плательщик налога на общих основаниях, плательщик ПДВ",
         "director": "Директор:",
         "privacy": "Политика конфиденциальности",
         "terms": "Условия использования",
-        "rights": "Все права защищены."
+        "rights": "Все права защищены.",
+        "companyName": "ПП Захід Агро Земля»",
+        "legalAddressValue": "35051, Rivne region, Kostopil district, village of Chudvy, old village Street, building 3а",
+        "postalAddressValue": "08051, с. Мар'янівка, вул. Мегедівська, 19, Бучанський р-н, Київська обл.",
+        "directorName": "Клещевникова С.С.",
+        "bankName": "АТ КБ «ПРИВАТБАНК» г. Рівне"
       },
       "trustStrip": {
         "experience": "Лет опыта",

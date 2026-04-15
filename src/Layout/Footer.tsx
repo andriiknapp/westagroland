@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'; // Импортируем Link
 import { Leaf, Mail, Phone, MapPin, ArrowUpRight, Building2, Landmark, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import './Footer.css';
@@ -6,11 +7,31 @@ export default function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
+  // Обновляем ссылки: добавляем корень "/", чтобы они работали с любых страниц
   const NAV_LINKS = [
-    { name: t('nav.home'), href: '#' },
-    { name: t('nav.products'), href: '#products' },
-    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.products'), href: '/#products' },
+    { name: t('nav.contact'), href: '/contact' },
   ];
+
+  // Функция для плавного скролла к якорям (как в Navbar)
+  const handleNavClick = (href) => {
+    // Если кликаем на главную и уже находимся на ней - плавно скроллим наверх
+    if (href === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (href.includes('#')) {
+      const id = href.split('#')[1];
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 0); // В футере меню закрывать не нужно, поэтому задержка 0
+    }
+  };
 
   return (
     <footer className="footer">
@@ -28,10 +49,11 @@ export default function Footer() {
             <p className="footer__description">
               {t('footer.brandDesc')}
             </p>
-            <a href="#contact" className="footer__contact-link">
+            {/* Заменяем <a> на <Link> */}
+            <Link to="/contact" className="footer__contact-link">
               {t('footer.contactUs')}
               <ArrowUpRight size={14} />
-            </a>
+            </Link>
           </div>
 
           {/* 2. Navigation */}
@@ -40,7 +62,14 @@ export default function Footer() {
             <ul className="footer__list">
               {NAV_LINKS.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="footer__link">{link.name}</a>
+                  {/* Заменяем <a> на <Link> с обработчиком скролла */}
+                  <Link 
+                    to={link.href} 
+                    className="footer__link"
+                    onClick={() => handleNavClick(link.href)}
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -51,12 +80,14 @@ export default function Footer() {
             <p className="footer__heading">{t('footer.contactsHeading')}</p>
             <ul className="footer__list">
               <li>
+                {/* tel: оставляем обычным <a> */}
                 <a href="tel:+380673606627" className="footer__contact-item">
                   <Phone size={16} className="footer__contact-icon" />
                   (067) 360 66 27
                 </a>
               </li>
               <li>
+                {/* mailto: оставляем обычным <a> */}
                 <a href="mailto:ppzahidagrozemly@ukr.net" className="footer__contact-item">
                   <Mail size={16} className="footer__contact-icon" />
                   ppzahidagrozemly@ukr.net
@@ -67,7 +98,7 @@ export default function Footer() {
                   <MapPin size={16} className="footer__contact-icon" style={{ marginTop: '2px' }} />
                   <div>
                     <span className="footer__info-label">{t('footer.postalAddress')}</span><br/>
-                    08051, с.Мар'янівка, вул. Мегедівська, 19,<br/> Бучанський р-н, Київська обл.
+                    35051, Rivne region, Kostopil district, village of Chudvy, old village Street, building 3а
                   </div>
                 </div>
               </li>
@@ -118,9 +149,14 @@ export default function Footer() {
             &copy; {currentYear} {t('nav.brandName')}. {t('footer.rights')}
           </p>
           <div className="footer__legal-links">
-            <a href="/privacy-policy" className="footer__legal-link">{t('footer.privacy')}</a>
+            {/* Заменяем <a> на <Link> для внутренних страниц */}
+            <Link to="/privacy-policy" className="footer__legal-link" onClick={() => handleNavClick('/')}>
+              {t('footer.privacy')}
+            </Link>
             <span className="footer__dot">•</span>
-            <a href="/terms-of-service" className="footer__legal-link">{t('footer.terms')}</a>
+            <Link to="/terms-of-service" className="footer__legal-link" onClick={() => handleNavClick('/')}>
+              {t('footer.terms')}
+            </Link>
           </div>
         </div>
       </div>
