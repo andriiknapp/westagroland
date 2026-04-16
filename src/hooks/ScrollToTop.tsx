@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 export default function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // Прокручиваем наверх при каждом изменении пути (pathname)
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
-  // Этот компонент ничего не рендерит визуально
-  return null;
+    if (!hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+
+  return null; // Этот компонент ничего не рендерит визуально
 }

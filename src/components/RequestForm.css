@@ -217,6 +217,9 @@
   }
   
   .request__selected-single {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Расстояние между флагом и текстом */
     padding-left: 4px;
   }
   
@@ -293,9 +296,12 @@
   }
   
   .request__single-option {
-    padding-left: 18px;
+    padding-left: 14px;
   }
-  
+  .request__flag-emoji {
+    font-size: 16px;
+    line-height: 1;
+  }
   /* ─── Selected Items Below Dropdown ───────────────────── */
   .request__selected-container {
     display: flex;

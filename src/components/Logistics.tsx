@@ -4,14 +4,15 @@ import { type LatLngExpression, type PathOptions, Layer } from 'leaflet';
 import type { Feature, Geometry } from 'geojson';
 import 'leaflet/dist/leaflet.css';
 import { Ship, Train, Truck } from "lucide-react";
-import { useTranslation } from 'react-i18next'; // ВЕРНУЛИ
+import { useTranslation } from 'react-i18next';
 import './Logistics.css';
 
 export const Logistics: React.FC = () => {
-  const { t } = useTranslation(); // ВЕРНУЛИ
+  const { t } = useTranslation();
   const [geoData, setGeoData] = useState<GeoJSON.FeatureCollection | null>(null);
 
   useEffect(() => {
+    // Загрузка топологии карты мира
     fetch("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
       .then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -41,24 +42,45 @@ export const Logistics: React.FC = () => {
     },
   ];
 
+  // Массивы mapKeys содержат точные имена из GeoJSON. 
+  // displayCountries тянется из словаря для красивого отображения.
   const logisticsRegions = [
     { 
       id: "ukraine",
       name: t('logistics.regions.ukraine.name'), 
       color: "#1a4d2e", 
-      countries: t('logistics.regions.ukraine.countries', { returnObjects: true }) as string[]
+      mapKeys: ["Ukraine"],
+      displayCountries: t('logistics.regions.ukraine.displayCountries')
     },
     { 
       id: "europe",
       name: t('logistics.regions.europe.name'), 
       color: "#f5a623", 
-      countries: t('logistics.regions.europe.countries', { returnObjects: true }) as string[]
+      mapKeys: [
+        "Albania", "Andorra", "Austria", "Belgium", "Bosnia and Herzegovina", 
+        "Bulgaria", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", 
+        "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", 
+        "Italy", "Kosovo", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", 
+        "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "Macedonia", 
+        "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "San Marino", 
+        "Republic of Serbia", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", 
+        "Switzerland", "United Kingdom", "England"
+      ],
+      displayCountries: t('logistics.regions.europe.displayCountries')
     },
     { 
       id: "asia",
       name: t('logistics.regions.asia.name'), 
       color: "#3385ff", 
-      countries: t('logistics.regions.asia.countries', { returnObjects: true }) as string[]
+      mapKeys: ["Turkey", "Georgia", "Azerbaijan", "Kazakhstan", "Armenia"],
+      displayCountries: t('logistics.regions.asia.displayCountries')
+    },
+    { 
+      id: "usa",
+      name: t('logistics.regions.usa.name'), 
+      color: "#e11d48", // Красный цвет для США (можете поменять)
+      mapKeys: ["USA", "United States", "United States of America"],
+      displayCountries: t('logistics.regions.usa.displayCountries')
     }
   ];
 
@@ -67,7 +89,8 @@ export const Logistics: React.FC = () => {
     
     const countryName = feature.properties.name || feature.properties.NAME || "";
     const cleanName = countryName.trim();
-    const region = logisticsRegions.find(r => r.countries.includes(cleanName));
+    // Ищем регион по ключам GeoJSON
+    const region = logisticsRegions.find(r => r.mapKeys.includes(cleanName));
 
     if (region) {
       return {
@@ -91,10 +114,10 @@ export const Logistics: React.FC = () => {
 
   const onEachFeature = (feature: Feature<Geometry, any>, layer: Layer) => {
     const name = feature.properties.name || feature.properties.NAME;
-    const isTargetRegion = logisticsRegions.find(r => r.countries.includes(name));
+    const isTargetRegion = logisticsRegions.find(r => r.mapKeys.includes(name));
     
     if (isTargetRegion) {
-      // Тут можно подставлять переведенное имя страны, но для простоты оставим оригинальное
+      // Подсказка на карте. Можно переводить, но для простоты оставляем оригинал
       layer.bindTooltip(name, { permanent: false, direction: "center" });
       
       layer.on({
@@ -110,6 +133,7 @@ export const Logistics: React.FC = () => {
     }
   };
 
+  // Чуть отдалил карту (zoom={3}), чтобы США попадали в область видимости при скролле
   const mapCenter: LatLngExpression = [48, 25];
 
   return (
@@ -143,9 +167,8 @@ export const Logistics: React.FC = () => {
                 />
                 <h3 className="region-name">{region.name}</h3>
               </div>
-              {/* Выводим страны через запятую (названия будут на англ, как в JSON) */}
               <div className="region-countries">
-                {region.countries.join(", ")}
+                {region.displayCountries}
               </div>
             </div>
           ))}
@@ -154,7 +177,7 @@ export const Logistics: React.FC = () => {
         <div className="leaflet-map-wrapper">
           <MapContainer 
             center={mapCenter} 
-            zoom={4} 
+            zoom={3} 
             scrollWheelZoom={false} 
             style={{ height: "500px", width: "100%", borderRadius: "1.5rem", zIndex: 1 }}
           >

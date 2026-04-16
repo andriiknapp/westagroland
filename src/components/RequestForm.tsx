@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
-import emailjs from '@emailjs/browser'; // ИМПОРТ EMAILJS
+import emailjs from '@emailjs/browser';
 import productRapeseed from '../assets/images/product-rapeseed.png';
 import productCorn from '../assets/images/product-corn.png';
 import productSunflower from '../assets/images/product-sunflower.png';
@@ -28,9 +28,56 @@ const OTHER = [
 
 const ALL_PRODUCTS = [...SEEDS, ...OTHER];
 
-const REGION_IDS = [
-  "ukraine", "poland", "germany", "romania", "hungary", "other_eu"
-];
+const REGIONS = [
+  // Основные рынки
+  { id: "ukraine", flag: "🇺🇦" },
+  { id: "usa", flag: "🇺🇸" },
+    // Кавказ и Азия
+    { id: "turkey", flag: "🇹🇷" },
+    { id: "georgia", flag: "🇬🇪" },
+    { id: "azerbaijan", flag: "🇦🇿" },
+    { id: "armenia", flag: "🇦🇲" },
+    { id: "kazakhstan", flag: "🇰🇿" },
+  // Европа / ЕС
+  { id: "austria", flag: "🇦🇹" },
+  { id: "belgium", flag: "🇧🇪" },
+  { id: "bulgaria", flag: "🇧🇬" },
+  { id: "croatia", flag: "🇭🇷" },
+  { id: "cyprus", flag: "🇨🇾" },
+  { id: "czech_republic", flag: "🇨🇿" },
+  { id: "denmark", flag: "🇩🇰" },
+  { id: "estonia", flag: "🇪🇪" },
+  { id: "finland", flag: "🇫🇮" },
+  { id: "france", flag: "🇫🇷" },
+  { id: "germany", flag: "🇩🇪" },
+  { id: "greece", flag: "🇬🇷" },
+  { id: "hungary", flag: "🇭🇺" },
+  { id: "ireland", flag: "🇮🇪" },
+  { id: "italy", flag: "🇮🇹" },
+  { id: "latvia", flag: "🇱🇻" },
+  { id: "lithuania", flag: "🇱🇹" },
+  { id: "luxembourg", flag: "🇱🇺" },
+  { id: "malta", flag: "🇲🇹" },
+  { id: "netherlands", flag: "🇳🇱" },
+  { id: "poland", flag: "🇵🇱" },
+  { id: "portugal", flag: "🇵🇹" },
+  { id: "romania", flag: "🇷🇴" },
+  { id: "slovakia", flag: "🇸🇰" },
+  { id: "slovenia", flag: "🇸🇮" },
+  { id: "spain", flag: "🇪🇸" },
+  { id: "sweden", flag: "🇸🇪" },
+  { id: "uk", flag: "🇬🇧" },
+  { id: "switzerland", flag: "🇨🇭" },
+  { id: "norway", flag: "🇳🇴" },
+  { id: "moldova", flag: "🇲🇩" },
+  { id: "serbia", flag: "🇷🇸" },
+  { id: "bosnia", flag: "🇧🇦" },
+  { id: "montenegro", flag: "🇲🇪" },
+  { id: "albania", flag: "🇦🇱" },
+  { id: "north_macedonia", flag: "🇲🇰" },
+  // Другое
+  { id: "other", flag: "🌍" }
+];;
 
 type DropdownType = "product" | "region" | null;
 
@@ -124,13 +171,11 @@ export default function RequestForm() {
     if (!validate()) return;
     setIsSubmitting(true);
 
-    // Формируем красивую строку продуктов для письма
     const productsString = formData.products.map(id => {
       if (id === 'other') return `${t(`requestForm.products.other`)}: ${formData.customProduct}`;
       return t(`requestForm.products.${id}`);
     }).join(', ');
 
-    // Данные для шаблона EmailJS
     const templateParams = {
       products: productsString,
       region: t(`requestForm.regions.${formData.region}`),
@@ -145,8 +190,6 @@ export default function RequestForm() {
       )
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
-        
-        // Перенаправляем на Thank You страницу и передаем данные для карточки
         navigate('/thank-you', { 
           state: { 
             products: productsString, 
@@ -154,8 +197,6 @@ export default function RequestForm() {
             phone: formData.phone 
           } 
         });
-        
-        // Сбрасываем форму
         setFormData({ products: [], customProduct: "", region: "", phone: "", agreement: false });
       })
     .catch((err) => {
@@ -176,7 +217,6 @@ export default function RequestForm() {
       <div className="request__container">
         <div className="request__grid">
 
-          {/* Left: info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -198,7 +238,6 @@ export default function RequestForm() {
             </div>
           </motion.div>
 
-          {/* Right: form card */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -230,7 +269,6 @@ export default function RequestForm() {
 
                   {openDropdown === "product" && (
                     <div className="request__select-dropdown">
-                      {/* SEEDS */}
                       <div className="request__dropdown-category">{t('requestForm.form.categories.seeds')}</div>
                       {SEEDS.map(product => {
                         const isSelected = formData.products.includes(product.id);
@@ -249,7 +287,6 @@ export default function RequestForm() {
                         );
                       })}
 
-                      {/* OTHER */}
                       <div className="request__dropdown-category">{t('requestForm.form.categories.other')}</div>
                       {OTHER.map(product => {
                         const isSelected = formData.products.includes(product.id);
@@ -272,7 +309,6 @@ export default function RequestForm() {
                 </div>
                 {errors.products && <p className="request__error-message">{errors.products}</p>}
 
-                {/* SELECTED PRODUCTS */}
                 {formData.products.length > 0 && (
                   <div className="request__selected-container">
                     {formData.products.map(productId => {
@@ -295,7 +331,6 @@ export default function RequestForm() {
                   </div>
                 )}
                 
-                {/* Custom input */}
                 {formData.products.includes("other") && (
                   <div style={{ marginTop: '10px' }}>
                     <input
@@ -317,6 +352,9 @@ export default function RequestForm() {
                   <div className="request__select-trigger" onClick={() => toggleDropdown("region")}>
                     {formData.region ? (
                       <div className="request__selected-single">
+                        <span className="request__flag-emoji">
+                          {REGIONS.find(r => r.id === formData.region)?.flag}
+                        </span>
                         <span>{t(`requestForm.regions.${formData.region}`)}</span>
                       </div>
                     ) : (
@@ -327,16 +365,17 @@ export default function RequestForm() {
 
                   {openDropdown === "region" && (
                     <div className="request__select-dropdown">
-                      {REGION_IDS.map(v => (
+                      {REGIONS.map(region => (
                         <div
-                          key={v}
+                          key={region.id}
                           className="request__select-option request__single-option"
                           onClick={() => {
-                            setFormData({ ...formData, region: v });
+                            setFormData({ ...formData, region: region.id });
                             setOpenDropdown(null);
                           }}
                         >
-                          <span>{t(`requestForm.regions.${v}`)}</span>
+                          <span className="request__flag-emoji">{region.flag}</span>
+                          <span>{t(`requestForm.regions.${region.id}`)}</span>
                         </div>
                       ))}
                     </div>

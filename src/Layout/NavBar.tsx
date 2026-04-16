@@ -43,23 +43,27 @@ export default function Navbar() {
     }
   };
 
-  // Умный обработчик кликов для ссылок (особенно для якорных ссылок вроде /#products)
   const handleNavClick = (href: string) => {
     if (isOpen) {
-      closeMenu();
+      // 1. Просто закрываем меню визуально, НЕ вызывая closeMenu() с его history.back()
+      setIsOpen(false);
+      
+      // 2. Тихо заменяем стейт в истории, чтобы при нажатии кнопки "Назад" 
+      // с новой страницы (например, с /contact) меню снова не открылось
+      if (window.history.state?.menu === 'open') {
+        window.history.replaceState({}, '', window.location.href);
+      }
     }
     
-    // Если ссылка содержит хэш (якорь), делаем плавный скролл вручную
+    // Если ссылка содержит хэш (якорь), делаем плавный скролл
     if (href.includes('#')) {
       const id = href.split('#')[1];
-      // Задержка нужна, чтобы успело сняться body.style.overflow = 'hidden' 
-      // и страница успела отрендериться, если мы переходим с другого роута
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, isOpen ? 300 : 0); // Если меню было открыто, ждем чуть дольше (пока закроется)
+      }, isOpen ? 300 : 0);
     }
   };
 

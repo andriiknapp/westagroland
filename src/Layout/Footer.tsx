@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Leaf, Mail, Phone, MapPin, ArrowUpRight, Building2, Landmark, FileText } from 'lucide-react';
+import { Leaf, Mail, Phone, MapPin, ArrowUpRight, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import './Footer.css';
 
@@ -103,21 +103,6 @@ export default function Footer() {
           <div className="footer__details">
             <p className="footer__heading">{t('footer.companyHeading')}</p>
             <ul className="footer__info-list">
-              <li>
-                <Building2 size={15} className="footer__info-icon" />
-                <span>
-                  <strong>{t('footer.companyName')}</strong><br/>
-                  ЄДРПОУ: 42632046<br/>
-                  ІПН: 426320417093
-                </span>
-              </li>
-              <li>
-                <Landmark size={15} className="footer__info-icon" />
-                <span>
-                  П/Р: UA243052990000026004020701667<br/>
-                  {t('footer.bank')} {t('footer.bankName')}
-                </span>
-              </li>
               <li>
                 <MapPin size={15} className="footer__info-icon" />
                 <span>

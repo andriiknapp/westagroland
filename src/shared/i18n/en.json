@@ -1,198 +1,240 @@
 {
-    "logistics": {
-      "title": "Logistics and Delivery",
-      "subtitle": "We ensure fast and reliable product delivery to any location",
-      "deliveryMethods": {
-        "maritime": {
-          "title": "Maritime Transport",
-          "desc": "Cost-effective delivery of large volumes of cargo through international ports."
-        },
-        "rail": {
-          "title": "Rail Transport",
-          "desc": "The optimal balance of price and speed for land routes."
-        },
-        "road": {
-          "title": "Road Transport",
-          "desc": "Fast and flexible door-to-door delivery by truck."
-        }
+  "logistics": {
+    "title": "Logistics and Delivery",
+    "subtitle": "We ensure fast and reliable product delivery to any location",
+    "deliveryMethods": {
+      "maritime": {
+        "title": "Maritime Transport",
+        "desc": "Cost-effective delivery of large volumes of cargo through international ports."
       },
-      "regions": {
-        "ukraine": {
-          "name": "Ukraine (Domestic Market)",
-          "countries": ["Ukraine"]
-        },
-        "europe": {
-          "name": "Europe (Export)",
-          "countries": ["Poland", "Germany", "Romania", "Hungary", "Slovakia", "Czech Republic", "Austria", "Moldova", "Bulgaria", "France", "Italy", "Spain", "Lithuania", "Latvia", "Estonia"]
-        },
-        "asia": {
-          "name": "Caucasus and Asia",
-          "countries": ["Turkey", "Georgia", "Azerbaijan", "Kazakhstan"]
-        }
+      "rail": {
+        "title": "Rail Transport",
+        "desc": "The optimal balance of price and speed for land routes."
       },
-      "mapLoading": "Loading map..."
-    },
-    "nav": {
-        "brandName": "Zakhid Agro Zemlia",
-        "home": "Home",
-        "products": "Products",
-        "contact": "Contact Us",
-        "cta": "Submit Request",
-        "tagline": "From field to global markets"
-      },
-      "productsGrid": {
-        "eyebrow": "Assortment",
-        "title": "Our Products",
-        "subtitle": "A wide range of agricultural crops for the international market.",
-        "items": [
-          {
-            "name": "Rapeseed",
-            "tag": "Spring / Winter",
-            "desc": "High yield, complies with EU standards. Year-round supply."
-          },
-          {
-            "name": "Corn",
-            "tag": "Feed / Food grade",
-            "desc": "High grain quality, stable moisture, class 3 and above."
-          },
-          {
-            "name": "Sunflower",
-            "tag": "Oil / High-oleic",
-            "desc": "In-house processing, certified products for the food industry."
-          },
-          {
-            "name": "Soybeans",
-            "tag": "Non-GMO · IP",
-            "desc": "IP-certified, Non-GMO, tested in accredited laboratories."
-          }
-        ]
-      },
-      "requestForm": {
-        "info": {
-          "eyebrow": "Contact Us",
-          "title": "Submit a Request",
-          "desc": "Fill out the form — our manager will contact you within one business day with offer details.",
-          "steps": [
-            { "num": "01", "label": "Choose product and region" },
-            { "num": "02", "label": "Leave your contact number" },
-            { "num": "03", "label": "Get an offer within 24 hours" }
-          ]
-        },
-        "banner": {
-          "title": "Quick Estimate",
-          "desc": "Get a profitable offer in just 30 minutes"
-        },
-        "form": {
-          "labels": {
-            "products": "Products",
-            "region": "Delivery Region",
-            "phone": "Phone Number",
-            "agreement": "By using this form, you agree to the processing of personal data."
-          },
-          "placeholders": {
-            "selectProducts": "Select crops...",
-            "addMore": "Add more products...",
-            "customProduct": "Enter crop name...",
-            "selectRegion": "Select a region..."
-          },
-          "categories": {
-            "seeds": "SEEDS",
-            "other": "OTHER"
-          },
-          "buttons": {
-            "remove": "Remove",
-            "submit": "Submit Request",
-            "submitting": "Submitting..."
-          },
-          "errors": {
-            "noProduct": "Please select at least one product",
-            "noCustomProduct": "Specify the crop name",
-            "noRegion": "Please select a region",
-            "noPhone": "Enter your phone number",
-            "invalidPhone": "Invalid phone format",
-            "noAgreement": "Consent is required"
-          },
-          "toast": {
-            "success": "Request successfully sent!",
-            "desc": "We will contact you shortly."
-          }
-        },
-        "products": {
-          "rapeseed_spring": "Spring Rapeseed",
-          "rapeseed_winter": "Winter Rapeseed",
-          "corn": "Corn",
-          "sunflower": "Sunflower",
-          "soybean": "Soybeans",
-          "other": "Other crop"
-        },
-        "regions": {
-          "ukraine": "Ukraine",
-          "poland": "Poland",
-          "germany": "Germany",
-          "romania": "Romania",
-          "hungary": "Hungary",
-          "other_eu": "Other EU Countries"
-        }
-      },
-      "footer": {
-        "brandDesc": "A reliable partner for international traders, food manufacturers, and European distributors.",
-        "contactUs": "Contact Us",
-        "navHeading": "Navigation",
-        "contactsHeading": "Contacts",
-        "companyHeading": "Company Details",
-        "legalAddress": "Legal address:",
-        "postalAddress": "Postal address:",
-        "bank": "Bank:",
-        "taxInfo": "Taxpayer on general terms, VAT payer",
-        "director": "Director:",
-        "privacy": "Privacy Policy",
-        "terms": "Terms of Service",
-        "rights": "All rights reserved.",
-        "companyName": "PE \"ZAKHID AGRO ZEMLIA\"",
-        "legalAddressValue": "35051, Rivne region, Kostopil district, village of Chudvy, Old Village Street, 3a",
-        "postalAddressValue": "08051, с. Мар'янівка, вул. Мегедівська, 19, Бучанський р-н, Київська обл.",
-        "directorName": "S.S. Kleshchevnikova",
-        "bankName": "JSC CB \"PRIVATBANK\" Rivne"
-      },
-      "trustStrip": {
-        "experience": "Years of experience",
-        "clients": "Clients",
-        "countries": "Partner countries",
-        "satisfaction": "Satisfaction rate"
-      },
-      "contactPage": {
-        "title": "Contact Us",
-        "subtitle": "We are always open to cooperation. Contact us in a way that is convenient for you.",
-        "phone": { "title": "Phone", "desc": "Consultations and support" },
-        "email": { "title": "Email", "desc": "For requests and offers" },
-        "address": { "title": "Office", "desc": "Maryanivka, Mehedivska st., 19" },
-        "hours": { "title": "Working Hours", "desc": "Mon-Fri: 09:00 - 18:00" }
-      },
-      "thankYou": {
-        "title": "Thank You!",
-        "messagePart1": "Your request has been successfully received. Our manager will contact you within ",
-        "messageHighlight": "30 minutes",
-        "messagePart2": ".",
-        "summaryTitle": "Request Summary",
-        "product": "Products",
-        "region": "Delivery Region",
-        "phone": "Phone",
-        "backHome": "Return to Home Page"
-      },
-      "hero": {
-        "slide1": {
-          "headline": "A reliable partner in global agricultural export",
-          "sub": "Quality proven by years of experience in international markets."
-        },
-        "slide2": {
-          "headline": "Sunflower and rapeseed — from field to port",
-          "sub": "Direct supplies without intermediaries. Transparent conditions. Reliable logistics."
-        },
-        "slide3": {
-          "headline": "World-class harvesting",
-          "sub": "Modern machinery and EU agronomic standards at every stage."
-        },
-        "btnPrimary": "Leave a request",
-        "btnGhost": "Our products"
+      "road": {
+        "title": "Road Transport",
+        "desc": "Fast and flexible door-to-door delivery by truck."
       }
+    },
+    "regions": {
+      "ukraine": {
+        "name": "Ukraine (Domestic Market)",
+        "displayCountries": "Ukraine"
+      },
+      "europe": {
+        "name": "Europe (Export)",
+        "displayCountries": "All European Union countries, UK, Ireland, Switzerland, Moldova, and others"
+      },
+      "asia": {
+        "name": "Caucasus and Asia",
+        "displayCountries": "Turkey, Georgia, Azerbaijan, Armenia, Kazakhstan"
+      },
+      "usa": {
+        "name": "North America",
+        "displayCountries": "United States of America"
+      }
+    },
+    "mapLoading": "Loading map..."
+  },
+  "nav": {
+    "brandName": "Zakhid Agro Zemlia",
+    "home": "Home",
+    "products": "Products",
+    "contact": "Contact Us",
+    "cta": "Submit Request",
+    "tagline": "From field to global markets"
+  },
+  "productsGrid": {
+    "eyebrow": "Assortment",
+    "title": "Our Products",
+    "subtitle": "A wide range of agricultural crops for the international market.",
+    "items": [
+      {
+        "name": "Rapeseed",
+        "tag": "Spring / Winter",
+        "desc": "High yield, complies with EU standards. Year-round supply."
+      },
+      {
+        "name": "Corn",
+        "tag": "Feed / Food grade",
+        "desc": "High grain quality, stable moisture, class 3 and above."
+      },
+      {
+        "name": "Sunflower",
+        "tag": "Oil / High-oleic",
+        "desc": "In-house processing, certified products for the food industry."
+      },
+      {
+        "name": "Soybeans",
+        "tag": "Non-GMO · IP",
+        "desc": "IP-certified, Non-GMO, tested in accredited laboratories."
+      }
+    ]
+  },
+  "requestForm": {
+    "info": {
+      "eyebrow": "Contact Us",
+      "title": "Submit a Request",
+      "desc": "Fill out the form — our manager will contact you within one business day with offer details.",
+      "steps": [
+        { "num": "01", "label": "Choose product and region" },
+        { "num": "02", "label": "Leave your contact number" },
+        { "num": "03", "label": "Get an offer within 24 hours" }
+      ]
+    },
+    "banner": {
+      "title": "Quick Estimate",
+      "desc": "Get a profitable offer in just 30 minutes"
+    },
+    "form": {
+      "labels": {
+        "products": "Products",
+        "region": "Delivery Region",
+        "phone": "Phone Number",
+        "agreement": "By using this form, you agree to the processing of personal data."
+      },
+      "placeholders": {
+        "selectProducts": "Select crops...",
+        "addMore": "Add more products...",
+        "customProduct": "Enter crop name...",
+        "selectRegion": "Select a region..."
+      },
+      "categories": {
+        "seeds": "SEEDS",
+        "other": "OTHER"
+      },
+      "buttons": {
+        "remove": "Remove",
+        "submit": "Submit Request",
+        "submitting": "Submitting..."
+      },
+      "errors": {
+        "noProduct": "Please select at least one product",
+        "noCustomProduct": "Specify the crop name",
+        "noRegion": "Please select a region",
+        "noPhone": "Enter your phone number",
+        "invalidPhone": "Invalid phone format",
+        "noAgreement": "Consent is required"
+      },
+      "toast": {
+        "success": "Request successfully sent!",
+        "desc": "We will contact you shortly."
+      }
+    },
+    "products": {
+      "rapeseed_spring": "Spring Rapeseed",
+      "rapeseed_winter": "Winter Rapeseed",
+      "corn": "Corn",
+      "sunflower": "Sunflower",
+      "soybean": "Soybeans",
+      "other": "Other crop"
+    },
+    "regions": {
+      "ukraine": "Ukraine",
+      "usa": "United States",
+      "albania": "Albania",
+      "armenia": "Armenia",
+      "austria": "Austria",
+      "azerbaijan": "Azerbaijan",
+      "belgium": "Belgium",
+      "bosnia": "Bosnia and Herzegovina",
+      "bulgaria": "Bulgaria",
+      "croatia": "Croatia",
+      "cyprus": "Cyprus",
+      "czech_republic": "Czech Republic",
+      "denmark": "Denmark",
+      "estonia": "Estonia",
+      "finland": "Finland",
+      "france": "France",
+      "georgia": "Georgia",
+      "germany": "Germany",
+      "greece": "Greece",
+      "hungary": "Hungary",
+      "ireland": "Ireland",
+      "italy": "Italy",
+      "kazakhstan": "Kazakhstan",
+      "latvia": "Latvia",
+      "lithuania": "Lithuania",
+      "luxembourg": "Luxembourg",
+      "malta": "Malta",
+      "moldova": "Moldova",
+      "montenegro": "Montenegro",
+      "netherlands": "Netherlands",
+      "north_macedonia": "North Macedonia",
+      "norway": "Norway",
+      "poland": "Poland",
+      "portugal": "Portugal",
+      "romania": "Romania",
+      "serbia": "Serbia",
+      "slovakia": "Slovakia",
+      "slovenia": "Slovenia",
+      "spain": "Spain",
+      "sweden": "Sweden",
+      "switzerland": "Switzerland",
+      "turkey": "Turkey",
+      "uk": "United Kingdom",
+      "other": "Other country"
+    }
+  },
+  "footer": {
+    "brandDesc": "A reliable partner for international traders, food manufacturers, and European distributors.",
+    "contactUs": "Contact Us",
+    "navHeading": "Navigation",
+    "contactsHeading": "Contacts",
+    "companyHeading": "Company Details",
+    "legalAddress": "Legal address:",
+    "postalAddress": "Postal address:",
+    "bank": "Bank:",
+    "taxInfo": "Taxpayer on general terms, VAT payer",
+    "director": "Director:",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "rights": "All rights reserved.",
+    "companyName": "PE \"ZAKHID AGRO ZEMLIA\"",
+    "legalAddressValue": "35051, Rivne region, Kostopil district, village of Chudvy, Old Village Street, 3a",
+    "postalAddressValue": "Vul. Mehedivsʹka, 19, Mar'yanivka, Kyiv Oblast, Ukraine, 08051",
+    "directorName": "S.S. Kleshchevnikova",
+    "bankName": "JSC CB \"PRIVATBANK\" Rivne"
+  },
+  "trustStrip": {
+    "experience": "Years of experience",
+    "clients": "Clients",
+    "countries": "Partner countries",
+    "satisfaction": "Satisfaction rate"
+  },
+  "contactPage": {
+    "title": "Contact Us",
+    "subtitle": "We are always open to cooperation. Contact us in a way that is convenient for you.",
+    "phone": { "title": "Phone", "desc": "Consultations and support" },
+    "email": { "title": "Email", "desc": "For requests and offers" },
+    "address": { "title": "Office", "desc": "Vul. Mehedivsʹka, 19, Mar'yanivka, Kyiv Oblast, Ukraine, 08051" },
+    "hours": { "title": "Working Hours", "desc": "Mon-Fri: 09:00 - 18:00" }
+  },
+  "thankYou": {
+    "title": "Thank You!",
+    "messagePart1": "Your request has been successfully received. Our manager will contact you within ",
+    "messageHighlight": "30 minutes",
+    "messagePart2": ".",
+    "summaryTitle": "Request Summary",
+    "product": "Products",
+    "region": "Delivery Region",
+    "phone": "Phone",
+    "backHome": "Return to Home Page"
+  },
+  "hero": {
+    "slide1": {
+      "headline": "A reliable partner in global agricultural export",
+      "sub": "Quality proven by years of experience in international markets."
+    },
+    "slide2": {
+      "headline": "Sunflower and rapeseed — from field to port",
+      "sub": "Direct supplies without intermediaries. Transparent conditions. Reliable logistics."
+    },
+    "slide3": {
+      "headline": "World-class harvesting",
+      "sub": "Modern machinery and EU agronomic standards at every stage."
+    },
+    "btnPrimary": "Leave a request",
+    "btnGhost": "Our products"
   }
+}
