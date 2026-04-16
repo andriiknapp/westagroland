@@ -10,7 +10,6 @@ export default function TermsOfService() {
 
   return (
     <div className="legal-page">
-      <NavBar />
       <main className="legal-page__main">
         <div className="legal-page__container">
           <h1 className="legal-page__title">Умови використання</h1>
@@ -75,7 +74,6 @@ export default function TermsOfService() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

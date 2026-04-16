@@ -52,7 +52,6 @@ export default function Contact() {
 
   return (
     <div className="contact-page">
-      <NavBar />
       <main className="contact-page__main">
         
         {/* Contact Info Section */}
@@ -104,7 +103,6 @@ export default function Contact() {
         <RequestForm />
 
       </main>
-      <Footer />
     </div>
   );
 }

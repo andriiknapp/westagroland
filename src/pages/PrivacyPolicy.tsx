@@ -11,7 +11,6 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="legal-page">
-      <NavBar />
       <main className="legal-page__main">
         <div className="legal-page__container">
           <h1 className="legal-page__title">Політика конфіденційності</h1>
@@ -61,7 +60,6 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

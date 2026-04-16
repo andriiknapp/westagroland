@@ -10,7 +10,6 @@ import { Logistics } from '@/components/Logistics';
 export default function Home() {
   return (
     <div className="home">
-      <NavBar />
       <main className="home__main">
         <HeroCarousel />
         <ProductsGrid />
@@ -18,7 +17,6 @@ export default function Home() {
         <RequestForm />
         <Logistics />
       </main>
-      <Footer />
     </div>
   );
 }

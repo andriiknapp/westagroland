@@ -23,7 +23,6 @@ export default function ThankYou() {
 
   return (
     <div className="thank-you-page">
-      <NavBar />
       <main className="thank-you-main">
         <div className="thank-you-container">
           
@@ -89,7 +88,6 @@ export default function ThankYou() {
           </Link>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
