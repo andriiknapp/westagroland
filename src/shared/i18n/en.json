@@ -191,8 +191,8 @@
     "terms": "Terms of Service",
     "rights": "All rights reserved.",
     "companyName": "PE \"ZAKHID AGRO ZEMLIA\"",
-    "legalAddressValue": "35051, Rivne region, Kostopil district, village of Chudvy, Old Village Street, 3a",
-    "postalAddressValue": "Vul. Mehedivsʹka, 19, Mar'yanivka, Kyiv Oblast, Ukraine, 08051",
+    "legalAddressValue": "35051, Rivne region, Kostopil district, village of Chudvy, Starosilska St., 3a",
+    "postalAddressValue": "35051, Rivne region, Kostopil district, village of Chudvy, Starosilska St., 3a",
     "directorName": "S.S. Kleshchevnikova",
     "bankName": "JSC CB \"PRIVATBANK\" Rivne"
   },
@@ -207,7 +207,7 @@
     "subtitle": "We are always open to cooperation. Contact us in a way that is convenient for you.",
     "phone": { "title": "Phone", "desc": "Consultations and support" },
     "email": { "title": "Email", "desc": "For requests and offers" },
-    "address": { "title": "Office", "desc": "Vul. Mehedivsʹka, 19, Mar'yanivka, Kyiv Oblast, Ukraine, 08051" },
+    "address": { "title": "Office", "desc": "35051, Rivne region, Kostopil district, village of Chudvy, Starosilska St., 3a" },
     "hours": { "title": "Working Hours", "desc": "Mon-Fri: 09:00 - 18:00" }
   },
   "thankYou": {

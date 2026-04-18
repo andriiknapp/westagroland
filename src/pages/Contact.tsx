@@ -37,7 +37,6 @@ export default function Contact() {
       icon: MapPin,
       title: t('contactPage.address.title'),
       value: t('contactPage.address.desc'),
-      desc: 'Київська обл., Бучанський р-н',
       link: null
     },
     {

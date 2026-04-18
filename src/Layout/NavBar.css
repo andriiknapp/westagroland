@@ -170,7 +170,9 @@
     z-index: 100;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    /* МЕНЯЕМ overflow: hidden; НА ЭТО: */
+    overflow-y: auto;
+    overflow-x: hidden;
     background: #f7f9f5;
   }
   
@@ -368,4 +370,19 @@
     margin-bottom: 12px;
     display: flex;
     justify-content: flex-start;
+    /* Добавляем позиционирование, чтобы список выпадал относительно этой обертки */
+    position: relative; 
+    z-index: 10;
+  }
+  
+/* Принудительно меняем привязку с правой на левую ТОЛЬКО внутри мобильного меню */
+.mobile-menu__lang-wrap .lang-selector__dropdown {
+  left: 0;
+  right: auto;
+}
+
+  .mobile-menu__lang-wrap .dropdown {
+    left: 0 !important;
+    right: auto !important;
+    transform: none !important;
   }

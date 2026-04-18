@@ -86,7 +86,7 @@ export default function Navbar() {
           />
         </div>
         <div className="navbar__logo-text-group">
-          <span className="navbar__logo-text">Zachid Agro Zemlia</span>
+          <span className="navbar__logo-text">Zakhid Agro Zemlia</span>
           <span className="navbar__logo-subtext">Agro Industrial Group</span>
         </div>
       </Link>
