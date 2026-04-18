@@ -78,7 +78,7 @@ export default function Footer() {
               <li>
                 <a href="tel:+380673606627" className="footer__contact-item">
                   <Phone size={16} className="footer__contact-icon" />
-                  (067) 360 66 27
+                  +38 (067) 360 66 27
                 </a>
               </li>
               <li>

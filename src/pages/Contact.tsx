@@ -20,7 +20,7 @@ export default function Contact() {
       id: 'phone',
       icon: Phone,
       title: t('contactPage.phone.title'),
-      value: '(067) 360 66 27',
+      value: '+38 (067) 360 66 27',
       desc: t('contactPage.phone.desc'),
       link: 'tel:+380673606627'
     },
