@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Leaf, Mail, Phone, MapPin, ArrowUpRight, FileText } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import './Footer.css';
 
@@ -38,12 +38,19 @@ export default function Footer() {
           
           {/* 1. Brand column */}
           <div className="footer__brand">
-            <div className="footer__logo">
-              <div className="footer__logo-icon">
-                <Leaf size={18} />
+            <Link to="/" className="footer__logo" onClick={() => handleNavClick('/')}>
+              <div className="footer__logo-container">
+                <img 
+                  src="/favicon.svg" 
+                  alt="Zakhid Agro Zemlia Logo" 
+                  className="footer__logo-img" 
+                />
               </div>
-              <span className="footer__logo-text">{t('nav.brandName')}</span>
-            </div>
+              <div className="footer__logo-text-group">
+                <span className="footer__logo-text">{t('nav.brandName')}</span>
+                <span className="footer__logo-subtext">Agro Industrial Group</span>
+              </div>
+            </Link>
             <p className="footer__description">
               {t('footer.brandDesc')}
             </p>
@@ -104,17 +111,16 @@ export default function Footer() {
             <p className="footer__heading">{t('footer.companyHeading')}</p>
             <ul className="footer__info-list">
               <li>
-                <MapPin size={15} className="footer__info-icon" />
+                <FileText size={15} className="footer__info-icon" />
                 <span>
-                  <span className="footer__info-label">{t('footer.legalAddress')}</span><br/>
-                  {t('footer.legalAddressValue')}
+                  <span className="footer__info-label">{t('footer.companyName')}</span><br/>
+                  {t('footer.edrpou')} 42632046
                 </span>
               </li>
               <li>
-                <FileText size={15} className="footer__info-icon" />
+                <MapPin size={15} className="footer__info-icon" />
                 <span>
-                  {t('footer.taxInfo')}<br/>
-                  <span className="footer__info-label">{t('footer.director')}</span> {t('footer.directorName')}
+                  {t('footer.legalAddressValue')}
                 </span>
               </li>
             </ul>
