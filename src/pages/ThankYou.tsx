@@ -17,10 +17,6 @@ export default function ThankYou() {
   const location = useLocation();
   const data = location.state as OrderSummary | null;
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="thank-you-page">
       <main className="thank-you-main">

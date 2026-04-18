@@ -10,11 +10,6 @@ import './Contact.css';
 export default function Contact() {
   const { t } = useTranslation();
 
-  // Скрол нагору при завантаженні сторінки
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const CONTACT_CARDS = [
     {
       id: 'phone',
